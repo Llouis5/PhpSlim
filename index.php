@@ -32,8 +32,14 @@ $app->get(
         $friends = [];
         while ($friend = $ret->fetchArray(SQLITE3_ASSOC)) {
             $friends[] = $friend;
+            if($friend)
+            {
         return $response->withJson($friends);
-       
+			}
+			else
+			{
+				return $response->withStatus(404)->withJson();
+			}
 	}
     }
 );
